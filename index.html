@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Central NG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./style/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="./js/tailwind.3.4.17.js"></script>
+</head>
+<body class="text-blue-800 font-['Poppins']  mx-auto bg-[#eef0ff]">
+    <!-- Navbar -->
+    <header class="bg-white sticky w-full top-0 shadow z-50">
+        <div class="container mx-auto flex items-center justify-between py-4 px-2 lg:px-6">
+            <div class="flex items-center space-x-2">
+                <a href="./"><img src="./images/logo.png" alt="Food Central" class="h-10" /></a>
+            </div>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex font-semibold gap-10 text-blue-900">
+                <a href="#" class="hover:text-green-600 transition-colors">Home</a>
+                <a href="#" class="hover:text-green-600 transition-colors">Menu</a>
+                <a href="./liquorCentral/" class="hover:text-green-600 transition-colors">Liquor Central</a>
+                <a href="#" class="hover:text-green-600 transition-colors">About</a>
+                <a href="#" class="hover:text-green-600 transition-colors">Blog</a>
+                <a href="#" class="hover:text-green-600 transition-colors">Contact</a>
+            </nav>
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex items-center gap-6">
+                <button class="relative">
+                   <img class="w-5" src="./images/icons/shopicon.svg" alt="">
+                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">2</span>
+                </button>
+                <a href="#">
+                    <img class="w-5" src="./images/icons/profile.svg" alt="">
+                </a>
+                <a href="#"
+                    class="bg-red-700 text-white px-3 text-xs lg:text-sm lg:px-4 py-1 lg:py-2 rounded-full hover:bg-red-800 transition-colors">Reservation</a>
+            </div>
+            <!-- Mobile Menu Items (visible on mobile) -->
+            <div class="flex md:hidden items-center gap-4">
+                <button class="relative">
+                   <img class="w-5" src="./images/icons/shopicon.svg" alt="">
+                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">2</span>
+                </button>
+                <!-- Hamburger Menu Button -->
+                <button id="mobileMenuToggle" class="p-2 focus:outline-none" aria-label="Open mobile menu">
+                    <div class="hamburger">
+                        <span class="block w-6 h-0.5 bg-blue-900 transition-all duration-300"></span>
+                        <span class="block w-6 h-0.5 bg-blue-900 mt-1 transition-all duration-300"></span>
+                        <span class="block w-6 h-0.5 bg-blue-900 mt-1 transition-all duration-300"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+            class="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <img src="./images/logo.png" alt="Food Central" class="h-8" />
+                    <button id="closeMobileMenu" class="p-2" aria-label="Close mobile menu">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Mobile Navigation Links -->
+                <nav class="flex flex-col space-y-4 font-semibold text-blue-900">
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Home</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Menu</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Liquor
+                        Central</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">About</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Blog</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Contact</a>
+                </nav>
+                <!-- Mobile Actions -->
+                <div class="mt-8 space-y-4">
+                    <a href="#" class="flex gap-2 items-center text-blue-900 hover:text-green-600 transition-colors">
+                        <img class="w-4" src="./images/icons/profile.svg" alt="">
+                        Profile
+                    </a>
+                    <a href="#"
+                        class="block w-full bg-red-700 text-white text-center py-3 rounded-full hover:bg-red-800 transition-colors">
+                        Make Reservation
+                    </a>
+                </div>
+                <!-- Mobile Search -->
+                <div class="mt-6">
+                    <form class="flex">
+                        <div
+                            class="focus-within:ring-2 border border-green-600 focus-within:ring-green-600 rounded-r-lg flex focus-within:outline-none focus-within:border-green-600 w-full">
+                            <button class="bg-green-600 text-white py-2 px-3 text-xs font-semibold" type="submit">Find
+                                Food</button>
+                            <input aria-label="find food"
+                                class="focus:outline-none py-2 px-3 text-green-800 flex-1 rounded-r-lg" type="text"
+                                placeholder="Search for food...">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-[1366px] mx-auto">
+        <!-- Hero -->
+        <section class="bg-[url(/images/herobg/Foodimage.jpg)] bg-no-repeat bg-cover">
+            <div class="grid w-full mx-auto grid-cols-1 lg:grid-cols-2 bg-[#eef0ffad] py-14">
+                <div class="col-start-1 row-start-1 flex flex-wrap  items-center px-3 lg:px-10 col-span-1">
+                    <div class="flex flex-col justify-between">
+                        <div class="w-full font-bold text-blue-900 text-5xl lg:text-6xl">
+                            <div class=""> You crave it?</div>
+                            <div class="py-5">Then we</div>
+                            <div class="text-green-700">serve it.</div>
+                        </div>
+                        <div class="text-blue-900 py-7 font-semibold text-sm lg:text-lg">
+                            We don’t just deliver meals; we serve moments. Food Central NG is your go-to for everyday
+                            deliciousness.
+                        </div>
+                        <div class="font-semibold text-sm pt-3 flex gap-5">
+                            <button
+                                class="bg-white border-2 border-red-800 py-2 2xl:py-3 px-5 rounded-full  text-red-800">View
+                                Menu</button>
+                            <button
+                                class="text-white bg-red-800 rounded-full py-2 2xl:py-3 px-5 border-2 border-red-800">
+                                Order
+                                Now</button>
+                        </div>
+                        <form class="flex pt-10">
+                            <div
+                                class="focus-within:ring-2 border border-green-600  focus-within:ring-green-600 rounded-r-lg flex focus-within:outline-none focus-within:border-green-600 focus:ring-2">
+                                <button class="bg-green-600 text-white  py-1 px-3 text-sm font-semibold"
+                                    type="submit">Find
+                                    Food</button><input aria-label="find food"
+                                    class="focus:outline-none py-1 px-3 text-green-800 grow max-w-[250px] rounded-r-lg"
+                                    type="text">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-start-2 row-start-1 lg:flex hidden items-center justify-center flex-wrap col-span-1">
+                    <div class="">
+                    </div>
+                    <div class="block"><img src="./images/img/herofood1.png" class="max-w-[500px]" alt="">
+                        <div class="flex justify-center">
+                            <div class="pt-6 flex gap-6">
+                                <!-- facebook logo  -->
+                                <div class="max-w-14">
+                                    <div class="bg-white p-2 rounded-full">
+                                        <a href="">
+                                           <img class="w-10" src="./images/icons/facebookicon.svg" alt="facebook icon">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- instagram icon  -->
+                                <div class="max-w-14">
+                                    <div class="bg-white p-3 rounded-full">
+                                        <a href="">
+                                            <img class="w-10" src="./images/icons/instagramicon.svg" alt="instagram icon">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- twitter icon -->
+                                <div class="max-w-14">
+                                    <div class="bg-white p-3 rounded-full">
+                                        <a href="">
+                                            <img class="w-10" src="./images/icons/twittericon.svg" alt="twitter icon">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Discount deals section  -->
+        <section class="flex justify-center py-7">
+            <div class="max-w-[1366px]">
+                <h3 class="text-center font-bold text-lg lg:text-2xl text-blue-900 py-7">Discount Deals</h3>
+                <img src="./images/img/dicdeals.png" alt="" srcset="">
+                <h3 class="text-center px-3 font-bold text-xl lg:text-3xl text-blue-900 pt-7 pb-2">Stay Informed About Special Offers</h3>
+                <p class="text-center px-3 font-normal text-sm lg:text-xl text-blue-900 ">Get the best meal deals in your inbox. Staying informed about special offers is a great way to maximize your savings and
+                take advantage of limited-time deals.</p>
+            </div>
+        </section>
+        <!-- best section  -->
+        <section class="py-12 lg:py-20 ">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- Main heading -->
+                    <h2 class="text-center font-bold text-xl lg:text-3xl text-blue-900 mb-12 lg:mb-16">
+                        Why We Are The Best
+                    </h2>
+                    <div class="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
+                        <!-- Food Images Grid -->
+                        <div class="grid grid-cols-2 lg:col-span-2 gap-4 lg:gap-6 order-2 lg:order-1">
+                            <!-- Top Left - Rice Bowl -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-br-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                <img src="./images/img/meal.jpg"
+                                    alt="Delicious rice bowl with vegetables"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <!-- Top Right - Pancakes -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-bl-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                <img src="./images/img/meal1.jpg"
+                                    alt="Stack of fluffy pancakes with syrup"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <!-- Bottom Left - Fried Items -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-tr-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&h=400&fit=crop&crop=center"
+                                    alt="Golden fried appetizers with dipping sauce"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <!-- Bottom Right - Grilled Meat -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-tl-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=400&fit=crop&crop=center"
+                                    alt="Grilled meat with blue cocktail"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                        </div>
+                        <!-- Content Section -->
+                        <div class="order-1 lg:order-2 lg:col-span-3 space-y-8 lg:space-y-10">
+                            <!-- Main Description -->
+                            <p class="font-normal text-sm lg:text-xl text-blue-900 leading-relaxed">
+                                We don't just deliver meals; we serve moments. With carefully selected ingredients, quick delivery,
+                                and unbeatable prices. From sizzling hot meals to ice-cold drinks, we bring you a taste experience
+                                like no other. At Food Central NG, we combine flavour, speed, and freshness to keep your cravings
+                                fully satisfied.
+                            </p>
+                            <!-- Features Grid -->
+                            <div class="grid sm:grid-cols-2 gap-6 lg:gap-3">
+                                <!-- Fast & Reliable Delivery -->
+                                <div
+                                    class="flex items-start space-x-4 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <img src="./images/icons/clockicon.svg" alt="clock icon">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Fast & Reliable Delivery</h3>
+                                    </div>
+                                </div>
+                                <!-- Freshly Made -->
+                                <div
+                                    class="flex items-start space-x-4 p-4  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <img src="./images/icons/foodicon.svg" alt="food icon">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Freshly Made with Quality Ingredients
+                                        </h3>
+                                    </div>
+                                </div>
+                                <!-- Affordable Prices -->
+                                <div
+                                    class="flex items-start space-x-4 p-4  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <img src="./images/icons/moneybagicon.svg" alt="moneybagicon">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Affordable Prices</h3>
+                                    </div>
+                                </div>
+                                <!-- Wide Variety -->
+                                <div
+                                    class="flex items-start space-x-4 p-4  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <img src="./images/icons/cupofdrinks.svg" alt="cup of drinks">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Wide Variety of Meals & Drinks</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- About Us Button -->
+                            <div class="pt-6">
+                                <button
+                                    class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform">
+                                    About us
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+         <!-- special menu section  -->
+        <section class="py-12 lg:py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Main heading -->
+                <h2 class="text-xl lg:text-3xl font-bold text-center text-blue-900 mb-12 lg:mb-16">
+                    Our Special Menu
+                </h2>
+                <!-- Food Menu Section -->
+                <div class="mb-12">
+                    <!-- Section Header -->
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-xl sm:text-2xl font-bold text-blue-900">Food Menu</h3>
+                        <button class="text-blue-900 hover:text-blue-00 font-semibold text-lg transition-colors duration-300">
+                            More
+                        </button>
+                    </div>
+                    <!-- Food Categories Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 mb-8">
+                        <!-- Rice Dishes -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/ricedishes.jpg"
+                                alt="Rice Dishes"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Rice Dishes</h4>
+                            </div>
+                        </div>
+                        <!-- Swallow & Soups -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/swallowandsoups.jpg"
+                                alt="Swallow & Soups"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Swallow & Soups</h4>
+                            </div>
+                        </div>
+                        <!-- Noodles & Pasta -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/noodlesandpasta.jpg" alt="Noodles & Pasta"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Noodles & Pasta</h4>
+                            </div>
+                        </div>
+                        <!-- Breakfast Specials -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/breakfastspecials.jpg" alt="Breakfast Specials"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Breakfast Specials</h4>
+                            </div>
+                        </div>
+                        <!-- Combo Meals -->
+                        <div
+                            class="relative overflow-hidden  rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 lg:rounded-b-none cursor-pointer group col-span-2 lg:col-span-1">
+                            <img src="./images/img/combo.jpg"
+                                alt="Combo Meals"
+                                class="w-full h-32 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute bottom-0 w-full py-2 text-center bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-opacity duration-300">
+                                <h4 class="text-white  font-bold text-lg sm:text-xl">Combo Meals</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second Row -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+                        <!-- Wraps -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/wraps.jpg" alt="Wraps"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Wraps</h4>
+                            </div>
+                        </div>
+                        <!-- Locals -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/Locals.jpg" alt="Locals"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Locals</h4>
+                            </div>
+                        </div>
+                        <!-- Vegies -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/VEGGIES.jpg" alt="Vegies"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Vegies</h4>
+                            </div>
+                        </div>
+                        <!-- Pepper Soup -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                            <img src="./images/img/PepperSoup.jpg" alt="Pepper Soup"
+                                class="w-full h-44 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Pepper Soup</h4>
+                            </div>
+                        </div>
+                        <!-- Snacks -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl rounded-b-none transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group col-span-2 lg:col-span-1">
+                            <img src="./images/img/Snacks.jpg" alt="Snacks"
+                                class="w-full h-32 sm:h-52 lg:h-60 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div
+                                class="absolute bottom-0 bg-black bg-opacity-40 py-2 group-hover:bg-opacity-30 transition-opacity duration-300 w-full text-center">
+                                <h4 class="text-white font-bold text-lg sm:text-xl">Snacks</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- top picks  -->
+        <section class="py-12 lg:py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Main heading -->
+                <h2 class="text-xl lg:text-3xl font-bold text-center text-blue-900 mb-12 lg:mb-16">
+                    Top Picks
+                </h2>
+                <!-- Top Picks Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Special Rice -->
+                    <div
+                        class="bg-white rounded-3xl rounded-b-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
+                        <!-- Image Container -->
+                        <div class="relative overflow-hidden">
+                            <img src="./images/img/specialrice.jpg"
+                                alt="Special Rice Dish"
+                                class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <!-- Price Tag -->
+                            <div
+                                class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <!-- Title and Action Buttons -->
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl lg:text-2xl font-bold text-blue-900">Special Rice</h3>
+                                <div class="flex space-x-3">
+                                    <button
+                                        aria-label="Add to cart"
+                                        title="Add to cart"
+                                        class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md hover:shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 1.5M7 13l-1.5-1.5M16 21a2 2 0 100-4 2 2 0 000 4zM7 21a2 2 0 100-4 2 2 0 000 4z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md hover:shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Description -->
+                            <p class="text-blue-900 leading-relaxed">
+                                Our Special Rice menu brings you a flavour-packed variety of rice dishes made to satisfy every
+                                craving. Each plate is made with love and bold Nigerian spices. Perfectly paired with your
+                                choice of protein or sides.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Family Combo -->
+                    <div
+                        class="bg-white rounded-3xl rounded-b-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
+                        <!-- Image Container -->
+                        <div class="relative overflow-hidden">
+                            <img src="./images/img/familycombo.jpg"
+                                alt="Family Combo Meal"
+                                class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <!-- Price Tag -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <!-- Title and Action Buttons -->
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl lg:text-2xl font-bold text-blue-900">Family Combo</h3>
+                                <div class="flex space-x-3">
+                                    <button
+                                        class="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md hover:shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 1.5M7 13l-1.5-1.5M16 21a2 2 0 100-4 2 2 0 000 4zM7 21a2 2 0 100-4 2 2 0 000 4z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md hover:shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Description -->
+                            <p class="text-blue-900 leading-relaxed">
+                                Feeding the whole squad? Our Family Combos are curated for sharing and enjoyment. It's the
+                                perfect pick for family dinners, hangouts, or office lunch breaks. Big portions. Bigger flavour.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Pasta & Pastries -->
+                    <div
+                        class="bg-white rounded-b-none rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group md:col-span-2 lg:col-span-1">
+                        <!-- Image Container -->
+                        <div class="relative overflow-hidden">
+                            <img src="./images/img/pastapastries.jpg"
+                                alt="Pasta & Pastries"
+                                class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <!-- Price Tag -->
+                            <div
+                                class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <!-- Title and Action Buttons -->
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl lg:text-2xl font-bold text-blue-900">Pasta & Pastries</h3>
+                                <div class="flex space-x-3">
+                                    <button
+                                        class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md hover:shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 1.5M7 13l-1.5-1.5M16 21a2 2 0 100-4 2 2 0 000 4zM7 21a2 2 0 100-4 2 2 0 000 4z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-full flex items-center justify-center transition-colors duration-300 shadow-md hover:shadow-lg">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Description -->
+                            <p class="text-blue-900 leading-relaxed">
+                                Delight in our range of saucy, stir-fried pasta dishes and oven-fresh pastries. Our Pasta &
+                                Pastries section offers that quick, tasty bite you'll love at any time of day
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- how it works  -->
+        <section class="py-16 px-4 max-w-7xl mx-auto">
+            <!-- Section Title -->
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">How it Works</h2>
+        
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Process Flow -->
+                <div class="space-y-8">
+                    <!-- Step 1: Browse Menu -->
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                                    <path
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                                </svg>
+                            </div>
+                            <span class="text-white font-semibold text-lg">Browse Menu</span>
+                        </div>
+                    </div>
+        
+                    <!-- Step 2: Add to Cart -->
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" />
+                                    <path d="M9 8V17H11V8H9ZM13 8V17H15V8H13Z" />
+                                </svg>
+                            </div>
+                            <span class="text-white font-semibold text-lg">Add to Cart</span>
+                        </div>
+                    </div>
+        
+                    <!-- Step 3: Checkout & Pay -->
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z" />
+                                    <circle cx="7" cy="15" r="1" />
+                                    <circle cx="11" cy="15" r="1" />
+                                </svg>
+                            </div>
+                            <span class="text-white font-semibold text-lg">Checkout & Pay</span>
+                        </div>
+                    </div>
+        
+                    <!-- Step 4: Get Served or Delivery -->
+                    <div class="flex items-center">
+                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M9 12L11 14L15 10M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4L13.5 7H12V13H18V11H22L21 9ZM16 17V19H8V17C8 17 8 16 10 16S12 17 12 17S12 16 14 16S16 17 16 17Z" />
+                                </svg>
+                            </div>
+                            <span class="text-white font-semibold text-lg">Get Served or Delivery</span>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Right Side Content -->
+                <div class="text-center lg:text-left">
+                    <!-- Scan & Explore Section -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Scan & Explore</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            Scan the QR code to instantly browse our full menu of delicious meals and drinks — quick, easy, and
+                            contactless. Your next crave-worthy order is just a scan away!
+                        </p>
+                    </div>
+        
+                    <!-- QR Code -->
+                    <div class="flex justify-center lg:justify-start mb-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-lg">
+                            <div class="w-48 h-48 bg-black relative">
+                                <!-- QR Code Pattern -->
+                                <svg viewBox="0 0 100 100" class="w-full h-full">
+                                    <!-- Corner squares -->
+                                    <rect x="0" y="0" width="20" height="20" fill="black" />
+                                    <rect x="3" y="3" width="14" height="14" fill="white" />
+                                    <rect x="6" y="6" width="8" height="8" fill="black" />
+        
+                                    <rect x="80" y="0" width="20" height="20" fill="black" />
+                                    <rect x="83" y="3" width="14" height="14" fill="white" />
+                                    <rect x="86" y="6" width="8" height="8" fill="black" />
+        
+                                    <rect x="0" y="80" width="20" height="20" fill="black" />
+                                    <rect x="3" y="83" width="14" height="14" fill="white" />
+                                    <rect x="6" y="86" width="8" height="8" fill="black" />
+        
+                                    <!-- Timing patterns -->
+                                    <rect x="8" y="22" width="2" height="2" fill="black" />
+                                    <rect x="8" y="26" width="2" height="2" fill="black" />
+                                    <rect x="8" y="30" width="2" height="2" fill="black" />
+                                    <rect x="8" y="34" width="2" height="2" fill="black" />
+                                    <rect x="8" y="38" width="2" height="2" fill="black" />
+                                    <rect x="8" y="42" width="2" height="2" fill="black" />
+                                    <rect x="8" y="46" width="2" height="2" fill="black" />
+                                    <rect x="8" y="50" width="2" height="2" fill="black" />
+                                    <rect x="8" y="54" width="2" height="2" fill="black" />
+                                    <rect x="8" y="58" width="2" height="2" fill="black" />
+                                    <rect x="8" y="62" width="2" height="2" fill="black" />
+                                    <rect x="8" y="66" width="2" height="2" fill="black" />
+                                    <rect x="8" y="70" width="2" height="2" fill="black" />
+                                    <rect x="8" y="74" width="2" height="2" fill="black" />
+                                    <rect x="8" y="78" width="2" height="2" fill="black" />
+        
+                                    <rect x="22" y="8" width="2" height="2" fill="black" />
+                                    <rect x="26" y="8" width="2" height="2" fill="black" />
+                                    <rect x="30" y="8" width="2" height="2" fill="black" />
+                                    <rect x="34" y="8" width="2" height="2" fill="black" />
+                                    <rect x="38" y="8" width="2" height="2" fill="black" />
+                                    <rect x="42" y="8" width="2" height="2" fill="black" />
+                                    <rect x="46" y="8" width="2" height="2" fill="black" />
+                                    <rect x="50" y="8" width="2" height="2" fill="black" />
+                                    <rect x="54" y="8" width="2" height="2" fill="black" />
+                                    <rect x="58" y="8" width="2" height="2" fill="black" />
+                                    <rect x="62" y="8" width="2" height="2" fill="black" />
+                                    <rect x="66" y="8" width="2" height="2" fill="black" />
+                                    <rect x="70" y="8" width="2" height="2" fill="black" />
+                                    <rect x="74" y="8" width="2" height="2" fill="black" />
+                                    <rect x="78" y="8" width="2" height="2" fill="black" />
+        
+                                    <!-- Data modules (random pattern) -->
+                                    <rect x="25" y="25" width="2" height="2" fill="black" />
+                                    <rect x="29" y="25" width="2" height="2" fill="black" />
+                                    <rect x="33" y="27" width="2" height="2" fill="black" />
+                                    <rect x="37" y="25" width="2" height="2" fill="black" />
+                                    <rect x="41" y="29" width="2" height="2" fill="black" />
+                                    <rect x="45" y="25" width="2" height="2" fill="black" />
+                                    <rect x="49" y="27" width="2" height="2" fill="black" />
+                                    <rect x="53" y="25" width="2" height="2" fill="black" />
+                                    <rect x="57" y="29" width="2" height="2" fill="black" />
+                                    <rect x="61" y="25" width="2" height="2" fill="black" />
+                                    <rect x="65" y="27" width="2" height="2" fill="black" />
+                                    <rect x="69" y="25" width="2" height="2" fill="black" />
+                                    <rect x="73" y="29" width="2" height="2" fill="black" />
+        
+                                    <rect x="25" y="33" width="2" height="2" fill="black" />
+                                    <rect x="31" y="33" width="2" height="2" fill="black" />
+                                    <rect x="35" y="35" width="2" height="2" fill="black" />
+                                    <rect x="39" y="33" width="2" height="2" fill="black" />
+                                    <rect x="43" y="37" width="2" height="2" fill="black" />
+                                    <rect x="47" y="33" width="2" height="2" fill="black" />
+                                    <rect x="51" y="35" width="2" height="2" fill="black" />
+                                    <rect x="55" y="33" width="2" height="2" fill="black" />
+                                    <rect x="59" y="37" width="2" height="2" fill="black" />
+                                    <rect x="63" y="33" width="2" height="2" fill="black" />
+                                    <rect x="67" y="35" width="2" height="2" fill="black" />
+                                    <rect x="71" y="33" width="2" height="2" fill="black" />
+        
+                                    <!-- More data pattern -->
+                                    <rect x="27" y="41" width="2" height="2" fill="black" />
+                                    <rect x="33" y="43" width="2" height="2" fill="black" />
+                                    <rect x="37" y="41" width="2" height="2" fill="black" />
+                                    <rect x="41" y="45" width="2" height="2" fill="black" />
+                                    <rect x="45" y="41" width="2" height="2" fill="black" />
+                                    <rect x="49" y="43" width="2" height="2" fill="black" />
+                                    <rect x="53" y="41" width="2" height="2" fill="black" />
+                                    <rect x="57" y="45" width="2" height="2" fill="black" />
+                                    <rect x="61" y="41" width="2" height="2" fill="black" />
+                                    <rect x="65" y="43" width="2" height="2" fill="black" />
+                                    <rect x="69" y="41" width="2" height="2" fill="black" />
+        
+                                    <rect x="25" y="49" width="2" height="2" fill="black" />
+                                    <rect x="31" y="51" width="2" height="2" fill="black" />
+                                    <rect x="35" y="49" width="2" height="2" fill="black" />
+                                    <rect x="39" y="53" width="2" height="2" fill="black" />
+                                    <rect x="43" y="49" width="2" height="2" fill="black" />
+                                    <rect x="47" y="51" width="2" height="2" fill="black" />
+                                    <rect x="51" y="49" width="2" height="2" fill="black" />
+                                    <rect x="55" y="53" width="2" height="2" fill="black" />
+                                    <rect x="59" y="49" width="2" height="2" fill="black" />
+                                    <rect x="63" y="51" width="2" height="2" fill="black" />
+                                    <rect x="67" y="49" width="2" height="2" fill="black" />
+        
+                                    <rect x="29" y="57" width="2" height="2" fill="black" />
+                                    <rect x="33" y="59" width="2" height="2" fill="black" />
+                                    <rect x="37" y="57" width="2" height="2" fill="black" />
+                                    <rect x="41" y="61" width="2" height="2" fill="black" />
+                                    <rect x="45" y="57" width="2" height="2" fill="black" />
+                                    <rect x="49" y="59" width="2" height="2" fill="black" />
+                                    <rect x="53" y="57" width="2" height="2" fill="black" />
+                                    <rect x="57" y="61" width="2" height="2" fill="black" />
+                                    <rect x="61" y="57" width="2" height="2" fill="black" />
+                                    <rect x="65" y="59" width="2" height="2" fill="black" />
+                                    <rect x="69" y="57" width="2" height="2" fill="black" />
+        
+                                    <rect x="25" y="65" width="2" height="2" fill="black" />
+                                    <rect x="31" y="67" width="2" height="2" fill="black" />
+                                    <rect x="35" y="65" width="2" height="2" fill="black" />
+                                    <rect x="39" y="69" width="2" height="2" fill="black" />
+                                    <rect x="43" y="65" width="2" height="2" fill="black" />
+                                    <rect x="47" y="67" width="2" height="2" fill="black" />
+                                    <rect x="51" y="65" width="2" height="2" fill="black" />
+                                    <rect x="55" y="69" width="2" height="2" fill="black" />
+                                    <rect x="59" y="65" width="2" height="2" fill="black" />
+                                    <rect x="63" y="67" width="2" height="2" fill="black" />
+                                    <rect x="67" y="65" width="2" height="2" fill="black" />
+        
+                                    <rect x="27" y="73" width="2" height="2" fill="black" />
+                                    <rect x="33" y="75" width="2" height="2" fill="black" />
+                                    <rect x="37" y="73" width="2" height="2" fill="black" />
+                                    <rect x="41" y="77" width="2" height="2" fill="black" />
+                                    <rect x="45" y="73" width="2" height="2" fill="black" />
+                                    <rect x="49" y="75" width="2" height="2" fill="black" />
+                                    <rect x="53" y="73" width="2" height="2" fill="black" />
+                                    <rect x="57" y="77" width="2" height="2" fill="black" />
+                                    <rect x="61" y="73" width="2" height="2" fill="black" />
+                                    <rect x="65" y="75" width="2" height="2" fill="black" />
+                                    <rect x="69" y="73" width="2" height="2" fill="black" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Browse Menu Button -->
+                    <!-- <div class="mt-12">
+                        <button
+                            class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-8 py-4 rounded-2xl flex items-center space-x-3 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                            <div class="bg-white rounded-lg p-2">
+                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                                    <path
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                                </svg>
+                            </div>
+                            <span>Browse Menu</span>
+                        </button>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+    <!-- testimonials -->
+        <section>
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Title -->
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Testimonial</h2>
+            
+                <!-- Slider Container -->
+                <div class="slider-container relative">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card px-3">
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                <div class="flex flex-col items-center text-center">
+                                    <!-- Profile Image -->
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                        <img src="./images/img/testimonial1.png"
+                                            alt="Temilade H" class="w-full h-full object-cover">
+                                    </div>
+            
+                                    <!-- Name -->
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4">Temilade H</h3>
+            
+                                    <!-- Testimonial Text -->
+                                    <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                        I'm very careful about the drinks I buy, ever since I came across this store, its the best
+                                        have found to deliver quality drinks. They are so fast and reliable.
+                                    </p>
+            
+                                    <!-- Stars -->
+                                    <div class="flex space-x-1">
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card px-3">
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                <div class="flex flex-col items-center text-center">
+                                    <!-- Profile Image -->
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                        <img src="./images/img/testimonial2.jpg"
+                                            alt="Yakub S" class="w-full h-full object-cover">
+                                    </div>
+            
+                                    <!-- Name -->
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4">Yakub S</h3>
+            
+                                    <!-- Testimonial Text -->
+                                    <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                        It's my first time patronising this brand, I wasn't sure of what to expect, their curated
+                                        bottles of drinks blew me away drinks. I love it.
+                                    </p>
+            
+                                    <!-- Stars -->
+                                    <div class="flex space-x-1">
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card px-3">
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                <div class="flex flex-col items-center text-center">
+                                    <!-- Profile Image -->
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                        <img src="./images/img/testimonial3.png"
+                                            alt="Anita M" class="w-full h-full object-cover">
+                                    </div>
+            
+                                    <!-- Name -->
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4">Anita M</h3>
+            
+                                    <!-- Testimonial Text -->
+                                    <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                        This is one brand that i have consistently patronise, they never at delivering quality
+                                        product and making every experience worth it. I love my orders.
+                                    </p>
+            
+                                    <!-- Stars -->
+                                    <div class="flex space-x-1">
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card px-3">
+                            <div
+                                class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                <div class="flex flex-col items-center text-center">
+                                    <!-- Profile Image -->
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                        <img src="./images/img/testimonial4.jpg"
+                                            alt="Simon P" class="w-full h-full object-cover">
+                                    </div>
+            
+                                    <!-- Name -->
+                                    <h3 class="text-xl font-bold text-gray-800 mb-4">Simon P</h3>
+            
+                                    <!-- Testimonial Text -->
+                                    <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                        I'm impressed about how simple and user-friendly using this app is. It checks every of my
+                                        boxes from the top-notch curated drinks to good customer support.
+                                    </p>
+            
+                                    <!-- Stars -->
+                                    <div class="flex space-x-1">
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                        <span class="star text-2xl">★</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Navigation Dots -->
+                <div class="flex justify-center mt-8 space-x-2" id="dots">
+                    <button class="w-3 h-3 rounded-full bg-blue-600 dot active" data-slide="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300 dot" data-slide="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300 dot" data-slide="2"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300 dot" data-slide="3"></button>
+                </div>
+            </div>
+
+        </section>
+
+    <!-- footer  -->
+    <footer class= "py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Brand Section -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center">
+                           <img src="./images/logo.png" alt="">
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Our curated selection of top-notch meals offers a diverse range of culinary experiences to satisfy
+                        every palate
+                    </p>
+                    <!-- Social Media Icons -->
+                    <div class="flex space-x-4">
+                        <!-- facebook logo  -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-2 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="./images/icons/facebookicon.svg" alt="facebook icon">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- instagram icon  -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-3 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="./images/icons/instagramicon.svg" alt="instagram icon">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- twitter icon -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-3 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="./images/icons/twittericon.svg" alt="twitter icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6 border-b-2 border-green-500 pb-2 inline-block">Quick
+                        Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">Liquor
+                                Central</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">Menu</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">Discount
+                                Deals</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">How
+                                it works</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6 border-b-2 border-green-500 pb-2 inline-block">
+                        Contact</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <img class="w-6" src="./images/icons/mdi_location.svg" alt="">
+                            <p class="text-gray-600 leading-relaxed">i- Fitness, Jakande L.W.S Close, Lekki Lagos,
+                                NGN</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <img class="w-6" src="./images/icons/phone.svg" alt="">
+                            <a href="tel:+2347088554136"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300">+2347088554136</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                        <img class="w-7" src="./images/icons/mail.svg" alt="">
+                            <a href="mailto:support@foodcentral.ng"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300">support@foodcentral.ng</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Subscribe -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6 border-b-2 border-green-500 pb-2 inline-block">
+                        Subscribe</h3>
+                    <p class="text-gray-600 text-sm mb-6">Get the best meal deals in your inbox</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter email address"
+                            class="flex-1 px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:border-green-500 transition-colors duration-300 text-sm">
+                        <button
+                            class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-r-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105">
+                            <img class="w-7" src="./images/icons/send.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-200 pt-8">
+                <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+                    <p class="text-gray-500 text-sm">Copyright © 2025 Food Central. All Right Reserved</p>
+                    <div class="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
+                        <a href="#"
+                            class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Privacy Policy
+                        </a>
+                        <a href="#"
+                            class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Terms and Conditions
+                        </a>
+                        <a href="#"
+                            class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Refund Policy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </main>
+    <script src="./js/scripts.js"></script>
+    <script src="./js/foodcentral.js"></script>
+</body>
+</html>

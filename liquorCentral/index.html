@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liquor Central NG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="../js/tailwind.3.4.17.js"></script>
+</head>
+
+<body class="text-blue-800 font-['Poppins']  mx-auto bg-[#eef0ff]">
+    <!-- Navbar -->
+    <header class="bg-white sticky w-full top-0 shadow z-50">
+        <div class="container mx-auto flex items-center justify-between py-4 px-2 lg:px-6">
+            <div class="flex items-center space-x-2">
+                <a href="./"><img src="../images/liquorlogo.png" alt="Food Central" class="h-10" /></a>
+            </div>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex font-semibold gap-10 text-blue-900">
+                <a href="#" class="hover:text-green-600 transition-colors">Home</a>
+                <a href="#" class="hover:text-green-600 transition-colors">Menu</a>
+                <a href="/" class="hover:text-green-600 transition-colors">Food Central</a>
+                <a href="#" class="hover:text-green-600 transition-colors">About</a>
+                <a href="#" class="hover:text-green-600 transition-colors">Blog</a>
+                <a href="#" class="hover:text-green-600 transition-colors">Contact</a>
+            </nav>
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex items-center gap-6">
+                <button class="relative">
+                    <img class="w-5" src="../images/icons/shopicon.svg" alt="">
+                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">2</span>
+                </button>
+                <a href="#">
+                    <img class="w-5" src="../images/icons/profile.svg" alt="">
+                </a>
+                <a href="#"
+                    class="bg-red-700 text-white px-3 text-xs lg:text-sm lg:px-4 py-1 lg:py-2 rounded-full hover:bg-red-800 transition-colors">Reservation</a>
+            </div>
+            <!-- Mobile Menu Items (visible on mobile) -->
+            <div class="flex md:hidden items-center gap-4">
+                <button class="relative">
+                    <img class="w-5" src="../images/icons/shopicon.svg" alt="">
+                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">2</span>
+                </button>
+                <!-- Hamburger Menu Button -->
+                <button id="mobileMenuToggle" class="p-2 focus:outline-none" aria-label="Open mobile menu">
+                    <div class="hamburger">
+                        <span class="block w-6 h-0.5 bg-blue-900 transition-all duration-100"></span>
+                        <span class="block w-6 h-0.5 bg-blue-900 mt-1 transition-all duration-100"></span>
+                        <span class="block w-6 h-0.5 bg-blue-900 mt-1 transition-all duration-100"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+            class="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-100 ease-in-out md:hidden">
+           <div class="p-6 flex justify-between">
+                <div class="flex justify-between items-center mb-8">
+                    <img src="../images/logo.png" alt="Food Central" class="h-8" />
+                    <button id="closeMobileMenu" class="p-2" aria-label="Close mobile menu">
+                        <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Mobile Navigation Links -->
+                <nav class="flex flex-col space-y-4 font-semibold text-blue-900">
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Home</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Menu</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Liquor
+                        Central</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">About</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Blog</a>
+                    <a href="#" class="py-3 border-b border-blue-100 hover:text-green-600 transition-colors">Contact</a>
+                </nav>
+                <!-- Mobile Actions -->
+                <div class="mt-8 space-y-4">
+                    <a href="#" class="flex gap-2 items-center text-blue-900 hover:text-green-600 transition-colors">
+                        <img class="w-4" src="../images/icons/profile.svg" alt="">
+                        Profile
+                    </a>
+                    <a href="#"
+                        class="block w-full bg-red-700 text-white text-center py-3 rounded-full hover:bg-red-800 transition-colors">
+                        Make Reservation
+                    </a>
+                </div>
+                <!-- Mobile Search -->
+                <div class="mt-6">
+                    <form class="flex">
+                        <div
+                            class="focus-within:ring-2 border border-green-600 focus-within:ring-green-600 rounded-r-lg flex focus-within:outline-none focus-within:border-green-600 w-full">
+                            <button class="bg-green-600 text-white py-2 px-3 text-xs font-semibold" type="submit">Find
+                                Food</button>
+                            <input aria-label="find food"
+                                class="focus:outline-none py-2 px-3 text-green-800 flex-1 rounded-r-lg" type="text"
+                                placeholder="Search for food...">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-black text-white overflow-x-hidden">
+            <div class="relative min-h-[70dvh]">
+                <!-- Hero Background -->
+                <div class="absolute inset-0">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+                    <div class="w-full h-full bg-cover bg-center bg-no-repeat"
+                        style="background-image: url('../images/herobg/liquorimg.jpg');">
+                    </div>
+                </div>
+                <!-- Content Container -->
+                <div class="relative z-20 container mx-auto px-4 py-8 lg:py-16">
+                    <div class="grid lg:grid-cols-2 gap-8 items-center min-h-[70dvh]">
+                        <!-- Left Content -->
+                        <div class="space-y-6 lg:space-y-8">
+                            <div class="space-y-4">
+                                <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                                    Sip the Finest<br>
+                                    Liquor from Our<br>
+                                    <span class="text-red-700">Quality Store</span>
+                                </h1>
+                                <p class="text-gray-300 text-lg md:text-xl max-w-lg">
+                                    Discover a wide range of liquors, wines, and exotic blends.
+                                </p>
+                            </div>
+                            <!-- CTA Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button
+                                    class="bg-white hover:bg-green-700 hover:text-white text-green-500 px-8 py-4 rounded-lg font-semibold transition-all duration-100 hover:scale-105">
+                                    Browse Drinks
+                                </button>
+                                <button
+                                    class="bg-green-600 hover:bg-white hover:text-green-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-0 hover:scale-105">
+                                    Shop Now
+                                </button>
+                            </div>
+                            <!-- Social Media Icons -->
+                            <div class="flex gap-4 pt-4">
+                                <div class="max-w-14 transition-all duration-100">
+                                    <div class="bg-white p-2 rounded-full">
+                                        <a href="">
+                                            <img class="w-10" src="../images/icons/facebookicon.svg"
+                                                alt="facebook icon">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- instagram icon  -->
+                                <div class="max-w-14">
+                                    <div class="bg-white p-3 rounded-full transition-all duration-100">
+                                        <a href="">
+                                            <img class="w-10" src="../images/icons/instagramicon.svg"
+                                                alt="instagram icon">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- twitter icon -->
+                                <div class="max-w-14">
+                                    <div class="bg-white p-3 rounded-full">
+                                        <a href="" class="transition-all duration-100">
+                                            <img class="w-10" src="../images/icons/twittericon.svg" alt="twitter icon">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Content - Popular Listings Slider -->
+                        <div class="relative">
+                            <!-- #NO Warning Badge -->
+                            <div class="absolute top-3 right-4 z-30">
+                                <div
+                                    class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-2">
+                                    <span class="text-xl">#</span>
+                                    <span>NO</span>
+                                    <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                                        <span class="text-red-600 text-xs font-bold">18</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slider Container -->
+                            <div class="bg-white/10 backdrop-blur-sm rounded-sm p-6 border border-white/20">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-semibold text-white">Popular Listings</h3>
+                                    <div class="flex gap-2">
+                                        <button id="prevBtn"
+                                            class="bg-white/20 hover:bg-white/30 p-2 rounded-lg transition-colors duration-100">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                        </button>
+                                        <button id="nextBtn"
+                                            class="bg-white/20 hover:bg-white/30 p-2 rounded-lg transition-colors duration-100">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Slider -->
+                                <div class="overflow-hidden">
+                                    <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+                                        <!-- Slide 1 -->
+                                        <div class="flex-none w-full">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                                <!-- Whiskey Collection -->
+                                                <div class="group cursor-pointer">
+                                                    <a href=""><img
+                                                            class="bg-black rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                            src="../images/img/popularlisting1.jpg" alt=""></a>
+                                                </div>
+                                                <!-- Bacardi -->
+                                                <div class="group cursor-pointer">
+                                                    <a href=""><img
+                                                            class="bg-black rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                            src="../images/img/popularlisting2.jpg" alt=""></a>
+                                                </div>
+                                                <!-- Cocktail -->
+                                                <div class="group cursor-pointer">
+                                                    <a href=""><img
+                                                            class="bg-black rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                            src="../images/img/popularlisting3.png" alt=""></a>
+                                                </div>
+                                                <!-- Johnnie Walker -->
+                                                <div class="group cursor-pointer">
+                                                    <a href=""><img
+                                                            class="bg-black rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                            src="../images/img/popularlisting4.png" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Slide 2 -->
+                                        <div class="flex-none w-full">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                                <!-- Vodka Collection -->
+                                                <div class="group cursor-pointer">
+                                                    <a href=""><img
+                                                            class="bg-black rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                            src="../images/img/popularlisting5.jpg" alt=""></a>
+                                                </div>
+                                                <!-- Rum -->
+                                                <div class="group cursor-pointer">
+                                                    <div
+                                                        class="bg-gradient-to-br from-amber-700 to-amber-900 rounded-lg p-4 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100">
+                                                        <div class="text-center">
+                                                            <div class="w-6 h-16 bg-amber-500 rounded-sm mx-auto mb-2">
+                                                            </div>
+                                                            <p class="text-xs text-white">Dark Rum</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Wine -->
+                                                <div class="group cursor-pointer">
+                                                    <div
+                                                        class="bg-gradient-to-br from-purple-800 to-red-900 rounded-lg p-4 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100">
+                                                        <div class="text-center">
+                                                            <div class="w-8 h-16 bg-purple-600 rounded-sm mx-auto mb-2">
+                                                            </div>
+                                                            <p class="text-xs text-white">Fine Wine</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Cognac -->
+                                                <div class="group cursor-pointer">
+                                                    <div
+                                                        class="bg-gradient-to-br from-yellow-800 to-orange-900 rounded-lg p-4 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100">
+                                                        <div class="text-center">
+                                                            <div class="w-8 h-14 bg-yellow-600 rounded-sm mx-auto mb-2">
+                                                            </div>
+                                                            <p class="text-xs text-white">Premium Cognac</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="px-5">
+            <section class="py-12 lg:py-20 ">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- Main heading -->
+                    <h2 class="text-center font-bold text-xl lg:text-3xl text-blue-900 mb-12 lg:mb-16">
+                        Why We Are The Best
+                    </h2>
+                    <div class="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
+                        <!-- Food Images Grid -->
+                        <div class="grid grid-cols-2 lg:col-span-2 gap-4 lg:gap-6 order-2 lg:order-1">
+                            <!-- Top Left - Rice Bowl -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-br-none shadow-lg hover:shadow-xl transition-shadow duration-100">
+                                <img src="../images/img/liquorabt1.png" alt="Delicious rice bowl with vegetables"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-100">
+                            </div>
+                            <!-- Top Right - Pancakes -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-bl-none shadow-lg hover:shadow-xl transition-shadow duration-100">
+                                <img src="../images/img/liquorabt2.png" alt="Stack of fluffy pancakes with syrup"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-100">
+                            </div>
+                            <!-- Bottom Left - Fried Items -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-tr-none shadow-lg hover:shadow-xl transition-shadow duration-100">
+                                <img src="../images/img/liquorabt3.png" alt="Golden fried appetizers with dipping sauce"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-100">
+                            </div>
+                            <!-- Bottom Right - Grilled Meat -->
+                            <div
+                                class="relative overflow-hidden rounded-[36px] rounded-tl-none shadow-lg hover:shadow-xl transition-shadow duration-100">
+                                <img src="../images/img/liquorabt4.png" alt="Grilled meat with blue cocktail"
+                                    class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-100">
+                            </div>
+                        </div>
+                        <!-- Content Section -->
+                        <div class="order-1 lg:order-2 lg:col-span-3 space-y-8 lg:space-y-10">
+                            <!-- Main Description -->
+                            <p class="font-normal text-sm lg:text-xl text-blue-900 leading-relaxed">
+                                We don’t just sell liquor, we deliver experience. every collection of our bottles is
+                                selected to
+                                savour your taste with
+                                rich flavour of pints that invites you into a world of pleasure and elevates your mood.
+                                At
+                                Liquor Centra NG, Our
+                                collection of drinks range is curated with quality standard to serve you premium
+                                enjoyment.
+                            </p>
+                            <!-- Features Grid -->
+                            <div class="grid sm:grid-cols-2 gap-6 lg:gap-3">
+                                <!-- Fast & Reliable Delivery -->
+                                <div
+                                    class="flex items-start space-x-4 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-100">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <img src="../images/icons/clockicon.svg" alt="clock icon">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Affordable Prices</h3>
+                                    </div>
+                                </div>
+                                <!-- Freshly Made -->
+                                <div
+                                    class="flex items-start space-x-4 p-4  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-100">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <img src="../images/icons/foodicon.svg" alt="food icon">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Fast & Reliable Delivery
+                                        </h3>
+                                    </div>
+                                </div>
+                                <!-- Affordable Prices -->
+                                <div
+                                    class="flex items-start space-x-4 p-4  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-100">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <img src="../images/icons/moneybagicon.svg" alt="moneybagicon">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Made with Quality
+                                            Ingredients
+                                        </h3>
+                                    </div>
+                                </div>
+                                <!-- Wide Variety -->
+                                <div
+                                    class="flex items-start space-x-4 p-4  rounded-xl shadow-sm hover:shadow-md transition-shadow duration-100">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <img src="../images/icons/cupofdrinks.svg" alt="cup of drinks">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-blue-900 mb-1">Good Customer Service</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- About Us Button -->
+                            <div class="pt-6">
+                                <button
+                                    class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-colors duration-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-transform">
+                                    About us
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- trending products -->
+            <section class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Trending Products</h2>
+                    <!-- Category Pills -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <button
+                            class="bg-green-500 text-white px-6 py-2 rounded-full font-medium hover:bg-green-600 transition-colors">
+                            Whisky
+                        </button>
+                        <button
+                            class="bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-full font-medium hover:bg-gray-50 transition-colors">
+                            Vodka
+                        </button>
+                        <button
+                            class="bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-full font-medium hover:bg-gray-50 transition-colors">
+                            Spirits
+                        </button>
+                    </div>
+                </div>
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Huskelek -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending1.png"
+                                alt="Huskelek Whisky"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Huskelek</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brandy -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending2.png"
+                                alt="Brandy"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Brandy</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Harey Staiskey -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending3.png"
+                                alt="Harey Staiskey"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Harey Staiskey</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Honteion -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending4.png"
+                                alt="Honteion"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Honteion</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Caneriak Blokeny -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending5.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Caneriak Blokeny</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gonbelt Whisky -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending6.png"
+                                alt="Gonbelt Whisky"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Gonbelt Whisky</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Adleren -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending7.png"
+                                alt="Adleren"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Adleren</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brantd -->
+                    <div class="group cursor-pointer">
+                        <div class="relative bg-black rounded-lg overflow-hidden aspect-square mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60">
+                            </div>
+                            <img src="../images/img/trending8.png"
+                                alt="Brantd"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-100">
+                            <div class="absolute bottom-4 left-4">
+                                <h3 class="text-white text-xl font-semibold">Brantd</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+            <!-- cta  -->
+            <section class="relative mx-auto  overflow-hidden bg-[url('../images/img/ctabg.png')] bg-cover bg-center bg-no-repeat my-20">
+                <!-- Main content container -->
+                <div class="relative z-10 flex bg-black/40 py-20 items-center px-6 lg:px-12">
+                    <div class="w-full max-w-7xl mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+                            <!-- Left content -->
+                            <div class="text-white">
+                                <h1 class="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+                                    Get <span class="">30%</span> Off
+                                </h1>
+                                <p class="text-lg lg:text-xl text-gray-200 mb-8 max-w-lg leading-relaxed">
+                                    Ready to restock your bar? Enjoy our curated collection of your favourite drink.
+                                </p>
+                               
+                            </div>           
+                        </div>
+                    </div>
+                </div>
+            
+            
+            </section>
+            <div class="px-5">
+            <!-- hot deals section  -->
+            <section class="max-w-7xl pt-20 mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Hot Deals</h2>
+                </div>
+            
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Product 1 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals1.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 2 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals2.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 3 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals3.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 4 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals4.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 5 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending5.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 6 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending4.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 7 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending8.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 8 -->
+                    <div class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending5.png"
+                                alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- best deals -->
+            <section class="max-w-7xl pt-20 mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800">Our Best Seller</h2>
+                </div>
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product 1 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative">
+                            <img src="../images/img/bestdeals1.png"
+                                alt="Huskelek Whisky" class="w-full h-80 object-cover">
+                            <!-- Price Badge -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                        <div class="p-6 flex justify-between">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Huskelek</h3>
+                            <div class="flex justify-between gap-2 items-center">
+                                <!-- Add to Cart Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                    </svg>
+                                </button>
+                                <!-- Wishlist Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative">
+                            <img src="../images/img/bestdeals2.png"
+                                alt="Huskelek Brandy" class="w-full h-80 object-cover">
+                            <!-- Price Badge -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                       <div class="p-6 flex justify-between">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Huskelek</h3>
+                            <div class="flex justify-between gap-2 items-center">
+                                <!-- Add to Cart Button -->
+                                <button
+                                    class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                    </svg>
+                                </button>
+                                <!-- Wishlist Button -->
+                                <button
+                                    class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative">
+                            <img src="../images/img/bestdeals3.png"
+                                alt="Huskelek Whisky" class="w-full h-80 object-cover">
+                            <!-- Price Badge -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                       <div class="p-6 flex justify-between">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Huskelek</h3>
+                            <div class="flex justify-between gap-2 items-center">
+                                <!-- Add to Cart Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                    </svg>
+                                </button>
+                                <!-- Wishlist Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative">
+                            <img src="../images/img/bestdeals4.png"
+                                alt="Caneriak Blokeny" class="w-full h-80 object-cover">
+                            <!-- Price Badge -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                       <div class="p-6 flex justify-between">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Huskelek</h3>
+                            <div class="flex justify-between gap-2 items-center">
+                                <!-- Add to Cart Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                    </svg>
+                                </button>
+                                <!-- Wishlist Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 5 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative">
+                            <img src="../images/img/bestdeals5.png"
+                                alt="Honteion Whisky" class="w-full h-80 object-cover">
+                            <!-- Price Badge -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                       <div class="p-6 flex justify-between">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Huskelek</h3>
+                            <div class="flex justify-between gap-2 items-center">
+                                <!-- Add to Cart Button -->
+                                <button
+                                    class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                    </svg>
+                                </button>
+                                <!-- Wishlist Button -->
+                                <button
+                                    class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 6 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative">
+                            <img src="../images/img/bestdeals1.png"
+                                alt="Gonbelt Whisky" class="w-full h-80 object-cover">
+                            <!-- Price Badge -->
+                            <div
+                                class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
+                                NGN 30,000
+                            </div>
+                        </div>
+                        <!-- Product Info -->
+                       <div class="p-6 flex justify-between">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Huskelek</h3>
+                            <div class="flex justify-between gap-2 items-center">
+                                <!-- Add to Cart Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                    </svg>
+                                </button>
+                                <!-- Wishlist Button -->
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- new arrivals section  -->
+            <section class="max-w-7xl pt-20 mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800">New Arrivals</h2>
+                </div>
+            
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Product 1 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals1.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 2 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals2.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 3 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals3.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 4 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/hotdeals4.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 5 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending5.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 6 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending4.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 7 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending8.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <!-- Product 8 -->
+                    <div
+                        class="group bg-white p-3 rounded-2xl shadow-md transition-all duration-300 hover:rounded-none cursor-pointer">
+                        <div class="relative bg-black rounded-2xl overflow-hidden aspect-square mb-4">
+                            <!-- Sales Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm z-10">
+                                Sales
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+                            <img src="../images/img/trending5.png" alt="Caneriak Blokeny"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Caneriak Blokeny</h3>
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center gap-3">
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9H19"></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button
+                                class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- how it works  -->
+            <section class="py-16 px-4 max-w-7xl mx-auto">
+                <!-- Section Title -->
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">How it Works</h2>
+            
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Process Flow -->
+                    <div class="space-y-8">
+                        <!-- Step 1: Browse Menu -->
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                                <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                    <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                                        <path
+                                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-lg">Browse Menu</span>
+                            </div>
+                        </div>
+            
+                        <!-- Step 2: Add to Cart -->
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                                <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                    <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" />
+                                        <path d="M9 8V17H11V8H9ZM13 8V17H15V8H13Z" />
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-lg">Add to Cart</span>
+                            </div>
+                        </div>
+            
+                        <!-- Step 3: Checkout & Pay -->
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                                <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                    <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z" />
+                                        <circle cx="7" cy="15" r="1" />
+                                        <circle cx="11" cy="15" r="1" />
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-lg">Checkout & Pay</span>
+                            </div>
+                        </div>
+            
+                        <!-- Step 4: Get Served or Delivery -->
+                        <div class="flex items-center">
+                            <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
+                                <div class="bg-white rounded-lg p-2 flex-shrink-0">
+                                    <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M9 12L11 14L15 10M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4L13.5 7H12V13H18V11H22L21 9ZM16 17V19H8V17C8 17 8 16 10 16S12 17 12 17S12 16 14 16S16 17 16 17Z" />
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-lg">Get Served or Delivery</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Right Side Content -->
+                    <div class="text-center lg:text-left">
+                        <!-- Scan & Explore Section -->
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Scan & Explore</h3>
+                            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                                Scan the QR code to instantly browse our full menu of delicious meals and drinks — quick, easy, and
+                                contactless. Your next crave-worthy order is just a scan away!
+                            </p>
+                        </div>
+            
+                        <!-- QR Code -->
+                        <div class="flex justify-center lg:justify-start mb-8">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                                <div class="w-48 h-48 bg-black relative">
+                                    <!-- QR Code Pattern -->
+                                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                                        <!-- Corner squares -->
+                                        <rect x="0" y="0" width="20" height="20" fill="black" />
+                                        <rect x="3" y="3" width="14" height="14" fill="white" />
+                                        <rect x="6" y="6" width="8" height="8" fill="black" />
+            
+                                        <rect x="80" y="0" width="20" height="20" fill="black" />
+                                        <rect x="83" y="3" width="14" height="14" fill="white" />
+                                        <rect x="86" y="6" width="8" height="8" fill="black" />
+            
+                                        <rect x="0" y="80" width="20" height="20" fill="black" />
+                                        <rect x="3" y="83" width="14" height="14" fill="white" />
+                                        <rect x="6" y="86" width="8" height="8" fill="black" />
+            
+                                        <!-- Timing patterns -->
+                                        <rect x="8" y="22" width="2" height="2" fill="black" />
+                                        <rect x="8" y="26" width="2" height="2" fill="black" />
+                                        <rect x="8" y="30" width="2" height="2" fill="black" />
+                                        <rect x="8" y="34" width="2" height="2" fill="black" />
+                                        <rect x="8" y="38" width="2" height="2" fill="black" />
+                                        <rect x="8" y="42" width="2" height="2" fill="black" />
+                                        <rect x="8" y="46" width="2" height="2" fill="black" />
+                                        <rect x="8" y="50" width="2" height="2" fill="black" />
+                                        <rect x="8" y="54" width="2" height="2" fill="black" />
+                                        <rect x="8" y="58" width="2" height="2" fill="black" />
+                                        <rect x="8" y="62" width="2" height="2" fill="black" />
+                                        <rect x="8" y="66" width="2" height="2" fill="black" />
+                                        <rect x="8" y="70" width="2" height="2" fill="black" />
+                                        <rect x="8" y="74" width="2" height="2" fill="black" />
+                                        <rect x="8" y="78" width="2" height="2" fill="black" />
+            
+                                        <rect x="22" y="8" width="2" height="2" fill="black" />
+                                        <rect x="26" y="8" width="2" height="2" fill="black" />
+                                        <rect x="30" y="8" width="2" height="2" fill="black" />
+                                        <rect x="34" y="8" width="2" height="2" fill="black" />
+                                        <rect x="38" y="8" width="2" height="2" fill="black" />
+                                        <rect x="42" y="8" width="2" height="2" fill="black" />
+                                        <rect x="46" y="8" width="2" height="2" fill="black" />
+                                        <rect x="50" y="8" width="2" height="2" fill="black" />
+                                        <rect x="54" y="8" width="2" height="2" fill="black" />
+                                        <rect x="58" y="8" width="2" height="2" fill="black" />
+                                        <rect x="62" y="8" width="2" height="2" fill="black" />
+                                        <rect x="66" y="8" width="2" height="2" fill="black" />
+                                        <rect x="70" y="8" width="2" height="2" fill="black" />
+                                        <rect x="74" y="8" width="2" height="2" fill="black" />
+                                        <rect x="78" y="8" width="2" height="2" fill="black" />
+            
+                                        <!-- Data modules (random pattern) -->
+                                        <rect x="25" y="25" width="2" height="2" fill="black" />
+                                        <rect x="29" y="25" width="2" height="2" fill="black" />
+                                        <rect x="33" y="27" width="2" height="2" fill="black" />
+                                        <rect x="37" y="25" width="2" height="2" fill="black" />
+                                        <rect x="41" y="29" width="2" height="2" fill="black" />
+                                        <rect x="45" y="25" width="2" height="2" fill="black" />
+                                        <rect x="49" y="27" width="2" height="2" fill="black" />
+                                        <rect x="53" y="25" width="2" height="2" fill="black" />
+                                        <rect x="57" y="29" width="2" height="2" fill="black" />
+                                        <rect x="61" y="25" width="2" height="2" fill="black" />
+                                        <rect x="65" y="27" width="2" height="2" fill="black" />
+                                        <rect x="69" y="25" width="2" height="2" fill="black" />
+                                        <rect x="73" y="29" width="2" height="2" fill="black" />
+            
+                                        <rect x="25" y="33" width="2" height="2" fill="black" />
+                                        <rect x="31" y="33" width="2" height="2" fill="black" />
+                                        <rect x="35" y="35" width="2" height="2" fill="black" />
+                                        <rect x="39" y="33" width="2" height="2" fill="black" />
+                                        <rect x="43" y="37" width="2" height="2" fill="black" />
+                                        <rect x="47" y="33" width="2" height="2" fill="black" />
+                                        <rect x="51" y="35" width="2" height="2" fill="black" />
+                                        <rect x="55" y="33" width="2" height="2" fill="black" />
+                                        <rect x="59" y="37" width="2" height="2" fill="black" />
+                                        <rect x="63" y="33" width="2" height="2" fill="black" />
+                                        <rect x="67" y="35" width="2" height="2" fill="black" />
+                                        <rect x="71" y="33" width="2" height="2" fill="black" />
+            
+                                        <!-- More data pattern -->
+                                        <rect x="27" y="41" width="2" height="2" fill="black" />
+                                        <rect x="33" y="43" width="2" height="2" fill="black" />
+                                        <rect x="37" y="41" width="2" height="2" fill="black" />
+                                        <rect x="41" y="45" width="2" height="2" fill="black" />
+                                        <rect x="45" y="41" width="2" height="2" fill="black" />
+                                        <rect x="49" y="43" width="2" height="2" fill="black" />
+                                        <rect x="53" y="41" width="2" height="2" fill="black" />
+                                        <rect x="57" y="45" width="2" height="2" fill="black" />
+                                        <rect x="61" y="41" width="2" height="2" fill="black" />
+                                        <rect x="65" y="43" width="2" height="2" fill="black" />
+                                        <rect x="69" y="41" width="2" height="2" fill="black" />
+            
+                                        <rect x="25" y="49" width="2" height="2" fill="black" />
+                                        <rect x="31" y="51" width="2" height="2" fill="black" />
+                                        <rect x="35" y="49" width="2" height="2" fill="black" />
+                                        <rect x="39" y="53" width="2" height="2" fill="black" />
+                                        <rect x="43" y="49" width="2" height="2" fill="black" />
+                                        <rect x="47" y="51" width="2" height="2" fill="black" />
+                                        <rect x="51" y="49" width="2" height="2" fill="black" />
+                                        <rect x="55" y="53" width="2" height="2" fill="black" />
+                                        <rect x="59" y="49" width="2" height="2" fill="black" />
+                                        <rect x="63" y="51" width="2" height="2" fill="black" />
+                                        <rect x="67" y="49" width="2" height="2" fill="black" />
+            
+                                        <rect x="29" y="57" width="2" height="2" fill="black" />
+                                        <rect x="33" y="59" width="2" height="2" fill="black" />
+                                        <rect x="37" y="57" width="2" height="2" fill="black" />
+                                        <rect x="41" y="61" width="2" height="2" fill="black" />
+                                        <rect x="45" y="57" width="2" height="2" fill="black" />
+                                        <rect x="49" y="59" width="2" height="2" fill="black" />
+                                        <rect x="53" y="57" width="2" height="2" fill="black" />
+                                        <rect x="57" y="61" width="2" height="2" fill="black" />
+                                        <rect x="61" y="57" width="2" height="2" fill="black" />
+                                        <rect x="65" y="59" width="2" height="2" fill="black" />
+                                        <rect x="69" y="57" width="2" height="2" fill="black" />
+            
+                                        <rect x="25" y="65" width="2" height="2" fill="black" />
+                                        <rect x="31" y="67" width="2" height="2" fill="black" />
+                                        <rect x="35" y="65" width="2" height="2" fill="black" />
+                                        <rect x="39" y="69" width="2" height="2" fill="black" />
+                                        <rect x="43" y="65" width="2" height="2" fill="black" />
+                                        <rect x="47" y="67" width="2" height="2" fill="black" />
+                                        <rect x="51" y="65" width="2" height="2" fill="black" />
+                                        <rect x="55" y="69" width="2" height="2" fill="black" />
+                                        <rect x="59" y="65" width="2" height="2" fill="black" />
+                                        <rect x="63" y="67" width="2" height="2" fill="black" />
+                                        <rect x="67" y="65" width="2" height="2" fill="black" />
+            
+                                        <rect x="27" y="73" width="2" height="2" fill="black" />
+                                        <rect x="33" y="75" width="2" height="2" fill="black" />
+                                        <rect x="37" y="73" width="2" height="2" fill="black" />
+                                        <rect x="41" y="77" width="2" height="2" fill="black" />
+                                        <rect x="45" y="73" width="2" height="2" fill="black" />
+                                        <rect x="49" y="75" width="2" height="2" fill="black" />
+                                        <rect x="53" y="73" width="2" height="2" fill="black" />
+                                        <rect x="57" y="77" width="2" height="2" fill="black" />
+                                        <rect x="61" y="73" width="2" height="2" fill="black" />
+                                        <rect x="65" y="75" width="2" height="2" fill="black" />
+                                        <rect x="69" y="73" width="2" height="2" fill="black" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Browse Menu Button -->
+                        <!-- <div class="mt-12">
+                                    <button
+                                        class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-8 py-4 rounded-2xl flex items-center space-x-3 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                                        <div class="bg-white rounded-lg p-2">
+                                            <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                                                <path
+                                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                                            </svg>
+                                        </div>
+                                        <span>Browse Menu</span>
+                                    </button>
+                                </div> -->
+                    </div>
+                </div>
+            </section>
+            <!-- testimonials -->
+            <section class="py-16">
+                <div class="max-w-7xl mx-auto px-4">
+                    <!-- Title -->
+                    <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Testimonial</h2>
+            
+                    <!-- Slider Container -->
+                    <div class="slider-container relative">
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Testimonial 1 -->
+                            <div class="testimonial-card px-3">
+                                <div
+                                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                    <div class="flex flex-col items-center text-center">
+                                        <!-- Profile Image -->
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                            <img src="../images/img/testimonial1.png" alt="Temilade H"
+                                                class="w-full h-full object-cover">
+                                        </div>
+            
+                                        <!-- Name -->
+                                        <h3 class="text-xl font-bold text-gray-800 mb-4">Temilade H</h3>
+            
+                                        <!-- Testimonial Text -->
+                                        <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                            I'm very careful about the drinks I buy, ever since I came across this store, its the
+                                            best
+                                            have found to deliver quality drinks. They are so fast and reliable.
+                                        </p>
+            
+                                        <!-- Stars -->
+                                        <div class="flex space-x-1">
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- Testimonial 2 -->
+                            <div class="testimonial-card px-3">
+                                <div
+                                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                    <div class="flex flex-col items-center text-center">
+                                        <!-- Profile Image -->
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                            <img src="../images/img/testimonial2.jpg" alt="Yakub S"
+                                                class="w-full h-full object-cover">
+                                        </div>
+            
+                                        <!-- Name -->
+                                        <h3 class="text-xl font-bold text-gray-800 mb-4">Yakub S</h3>
+            
+                                        <!-- Testimonial Text -->
+                                        <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                            It's my first time patronising this brand, I wasn't sure of what to expect, their
+                                            curated
+                                            bottles of drinks blew me away drinks. I love it.
+                                        </p>
+            
+                                        <!-- Stars -->
+                                        <div class="flex space-x-1">
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- Testimonial 3 -->
+                            <div class="testimonial-card px-3">
+                                <div
+                                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                    <div class="flex flex-col items-center text-center">
+                                        <!-- Profile Image -->
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                            <img src="../images/img/testimonial3.png" alt="Anita M"
+                                                class="w-full h-full object-cover">
+                                        </div>
+            
+                                        <!-- Name -->
+                                        <h3 class="text-xl font-bold text-gray-800 mb-4">Anita M</h3>
+            
+                                        <!-- Testimonial Text -->
+                                        <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                            This is one brand that i have consistently patronise, they never at delivering quality
+                                            product and making every experience worth it. I love my orders.
+                                        </p>
+            
+                                        <!-- Stars -->
+                                        <div class="flex space-x-1">
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- Testimonial 4 -->
+                            <div class="testimonial-card px-3">
+                                <div
+                                    class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                                    <div class="flex flex-col items-center text-center">
+                                        <!-- Profile Image -->
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mb-6">
+                                            <img src="../images/img/testimonial4.jpg" alt="Simon P"
+                                                class="w-full h-full object-cover">
+                                        </div>
+            
+                                        <!-- Name -->
+                                        <h3 class="text-xl font-bold text-gray-800 mb-4">Simon P</h3>
+            
+                                        <!-- Testimonial Text -->
+                                        <p class="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                                            I'm impressed about how simple and user-friendly using this app is. It checks every of
+                                            my
+                                            boxes from the top-notch curated drinks to good customer support.
+                                        </p>
+            
+                                        <!-- Stars -->
+                                        <div class="flex space-x-1">
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                            <span class="star text-2xl">★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Navigation Dots -->
+                    <div class="flex justify-center mt-8 space-x-2" id="dots">
+                        <button class="w-3 h-3 rounded-full bg-blue-600 dot active" data-slide="0"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 dot" data-slide="1"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 dot" data-slide="2"></button>
+                        <button class="w-3 h-3 rounded-full bg-gray-300 dot" data-slide="3"></button>
+                    </div>
+                </div>
+            
+            </section>
+
+        </div>
+    <!-- footer  -->
+    <footer class="py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Brand Section -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center">
+                            <img src="../images/liquorlogo.png" alt="">
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                        Our curated selection of top-notch meals offers a diverse range of culinary experiences to satisfy
+                        every palate
+                    </p>
+                    <!-- Social Media Icons -->
+                    <div class="flex space-x-4">
+                        <!-- facebook logo  -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-2 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="../images/icons/facebookicon.svg" alt="facebook icon">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- instagram icon  -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-3 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="../images/icons/instagramicon.svg" alt="instagram icon">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- twitter icon -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-3 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="../images/icons/twittericon.svg" alt="twitter icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6 border-b-2 border-green-500 pb-2 inline-block">Quick
+                        Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">Liquor
+                                Central</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">Menu</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">Discount
+                                Deals</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300 hover:translate-x-1 transform inline-block">How
+                                it works</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6 border-b-2 border-green-500 pb-2 inline-block">
+                        Contact</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <img class="w-6" src="../images/icons/mdi_location.svg" alt="">
+                            <p class="text-gray-600 leading-relaxed">i- Fitness, Jakande L.W.S Close, Lekki Lagos,
+                                NGN</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <img class="w-6" src="../images/icons/phone.svg" alt="">
+                            <a href="tel:+2347088554136"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300">+2347088554136</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <img class="w-7" src="../images/icons/mail.svg" alt="">
+                            <a href="mailto:support@foodcentral.ng"
+                                class="text-gray-600 hover:text-green-500 transition-colors duration-300">support@foodcentral.ng</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Subscribe -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-6 border-b-2 border-green-500 pb-2 inline-block">
+                        Subscribe</h3>
+                    <p class="text-gray-600 text-sm mb-6">Get the best meal deals in your inbox</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter email address"
+                            class="flex-1 px-4 py-3 border border-gray-300 rounded-l-lg focus:outline-none focus:border-green-500 transition-colors duration-300 text-sm">
+                        <button
+                            class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-r-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105">
+                            <img class="w-7" src="../images/icons/send.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-200 pt-8">
+                <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+                    <p class="text-gray-500 text-sm">Copyright © 2025 Food Central. All Right Reserved</p>
+                    <div class="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
+                        <a href="#"
+                            class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Privacy Policy
+                        </a>
+                        <a href="#"
+                            class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Terms and Conditions
+                        </a>
+                        <a href="#"
+                            class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                            Refund Policy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </main>
+    <script src="../js/scripts.js">
+    </script>
+        <script src="../js/foodcentral.js"></script>
+    <script src="../js/liquor.js"></script>
+</body>
+
+</html>
