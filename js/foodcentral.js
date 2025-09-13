@@ -212,4 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const slider = new TestimonialSlider();
     // Store slider instance globally for resize handling
     window.testimonialSlider = slider;
+
+    
 });

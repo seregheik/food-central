@@ -80,3 +80,4 @@ function togglePassword(inputId) {
     const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
     input.setAttribute('type', type);
 }
+

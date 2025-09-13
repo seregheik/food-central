@@ -137,22 +137,55 @@
 .star {
   color: #fbbf24;
 }
- /* Ensure slider items are properly displayed */
-        .slider-item {
-            min-width: 0;
-            flex-shrink: 0;
-        }
-        
-        /* Mobile: 2 items per row */
-        @media (max-width: 767px) {
-            .slider-item {
-                width: calc(50% - 8px);
-            }
-        }
-        
-        /* Tablet and up: 4 items per row */
-        @media (min-width: 768px) {
-            .slider-item {
-                width: calc(25% - 12px);
-            }
-        }
+/* Ensure slider items are properly displayed */
+.slider-item {
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+/* Mobile: 2 items per row */
+@media (max-width: 767px) {
+  .slider-item {
+    width: calc(50% - 8px);
+  }
+}
+
+/* Tablet and up: 4 items per row */
+@media (min-width: 768px) {
+  .slider-item {
+    width: calc(25% - 12px);
+  }
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.brands-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.brands-wrapper {
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+}
+
+.brand-text {
+  font-family: "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Pause animation on hover */
+.brands-container:hover .brands-wrapper {
+  animation-play-state: paused;
+}
