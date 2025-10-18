@@ -11,6 +11,19 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="./js/tailwind.3.4.17.js"></script>
+    <style>
+        .image-transition {
+            transition: opacity 1s ease-in-out;
+        }
+    
+        .fade-out {
+            opacity: 0.6;
+        }
+    
+        .fade-in {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="text-blue-800 font-['Poppins']  mx-auto bg-[#eef0ff]">
     <!-- Navbar -->
@@ -20,7 +33,7 @@
                 <a href="./"><img src="./images/logo.png" alt="Food Central" class="h-10" /></a>
             </div>
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex font-semibold gap-10 text-blue-900">
+            <nav class="hidden lg:flex font-semibold gap-10 text-blue-900">
                 <a href="#" class="hover:text-green-600 transition-colors">Home</a>
                 <a href="#" class="hover:text-green-600 transition-colors">Menu</a>
                 <a href="./liquorCentral/" class="hover:text-green-600 transition-colors">Liquor Central</a>
@@ -29,7 +42,7 @@
                 <a href="#" class="hover:text-green-600 transition-colors">Contact</a>
             </nav>
             <!-- Desktop Actions -->
-            <div class="hidden md:flex items-center gap-6">
+            <div class="hidden lg:flex items-center gap-6">
                 <button class="relative">
                    <img class="w-5" src="./images/icons/shopicon.svg" alt="">
                     <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">2</span>
@@ -41,7 +54,7 @@
                     class="bg-red-700 text-white px-3 text-xs lg:text-sm lg:px-4 py-1 lg:py-2 rounded-full hover:bg-red-800 transition-colors">Reservation</a>
             </div>
             <!-- Mobile Menu Items (visible on mobile) -->
-            <div class="flex md:hidden items-center gap-4">
+            <div class="flex lg:hidden items-center gap-4">
                 <button class="relative">
                    <img class="w-5" src="./images/icons/shopicon.svg" alt="">
                     <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">2</span>
@@ -57,10 +70,10 @@
             </div>
         </div>
         <!-- Mobile Menu Overlay -->
-        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
         <!-- Mobile Menu -->
         <div id="mobileMenu"
-            class="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-100 ease-in-out md:hidden">
+            class="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-100 ease-in-out lg:hidden">
             <div class="p-6 flex flex-wrap justify-between">
                 <div class="flex justify-between w-full items-center mb-8">
                     <img src="../images/logo.png" alt="Food Central" class="h-8" />
@@ -184,12 +197,59 @@
         <section class="flex justify-center py-7">
             <div class="max-w-[1366px]">
                 <h3 class="text-center font-bold text-lg lg:text-2xl text-blue-900 py-7">Discount Deals</h3>
-                <img src="./images/img/dicdeals.png" alt="" srcset="">
-                <h3 class="text-center px-3 font-bold text-xl lg:text-3xl text-blue-900 pt-7 pb-2">Stay Informed About Special Offers</h3>
-                <p class="text-center px-3 font-normal text-sm lg:text-xl text-blue-900 ">Get the best meal deals in your inbox. Staying informed about special offers is a great way to maximize your savings and
-                take advantage of limited-time deals.</p>
+        
+                <div class="relative hidden md:block">
+                    <img id="carousel-image" class="image-transition fade-in w-full" src="./images/img/dicdeals.png"
+                        alt="Discount Deal" />
+                        <img id="carousel-image" class="image-transition md:hidden fade-in w-full" src="./images/img/MOBILE.png" alt="Discount Deal" />
+                </div>
+        
+                <h3 class="text-center px-3 font-bold text-xl lg:text-3xl text-blue-900 pt-7 pb-2">Stay Informed About Special
+                    Offers</h3>
+                <p class="text-center px-3 font-normal text-sm lg:text-xl text-blue-900">Get the best meal deals in your inbox.
+                    Staying informed about special offers is a great way to maximize your savings and take advantage of
+                    limited-time deals.</p>
             </div>
         </section>
+        <script>
+            // Array of image sources
+            const images = [
+                './images/img/dicdeals.png',
+                './images/img/dicdeals2.png',
+            ];
+
+            let currentIndex = 0;
+            const img = document.getElementById('carousel-image');
+
+            function transitionImage() {
+                // Fade out
+                img.classList.remove('fade-in');
+                img.classList.add('fade-out');
+
+                // Wait for fade out to complete, then change image
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    img.src = images[currentIndex];
+
+                    // Fade in
+                    img.classList.remove('fade-out');
+                    img.classList.add('fade-in');
+                }, 1000); // Match the CSS transition duration
+            }
+
+            // Change image every 4 seconds
+            setInterval(transitionImage, 4000);
+        </script>
+        <div class="flex justify-center">
+            <div class="flex">
+                <input type="email" placeholder="Enter email address"
+                    class="flex-1 px-4 py-3 border border-gray-300 bg-transparent rounded-l-lg focus:outline-none focus:border-green-500 transition-colors duration-300 text-sm">
+                <button
+                    class="bg-red-700 hover:bg-red-800 text-white px-6 py-3 rounded-r-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105">
+                    <img class="w-7" src="./images/icons/send.svg" alt="">
+                </button>
+            </div>
+        </div>
         <!-- best section  -->
         <section class="py-12 lg:py-20 ">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -575,238 +635,27 @@
             <!-- Section Title -->
             <h2 class="text-xl lg:text-4xl font-bold text-center text-blue-900 mb-12 lg:mb-16">How it Works</h2>
         
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <!-- Process Flow -->
                 <div class="space-y-8">
-                    <!-- Step 1: Browse Menu -->
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
-                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                                    <path
-                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
-                                </svg>
-                            </div>
-                            <span class="text-white font-semibold text-lg">Browse Menu</span>
-                        </div>
-                    </div>
-        
-                    <!-- Step 2: Add to Cart -->
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
-                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" />
-                                    <path d="M9 8V17H11V8H9ZM13 8V17H15V8H13Z" />
-                                </svg>
-                            </div>
-                            <span class="text-white font-semibold text-lg">Add to Cart</span>
-                        </div>
-                    </div>
-        
-                    <!-- Step 3: Checkout & Pay -->
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
-                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z" />
-                                    <circle cx="7" cy="15" r="1" />
-                                    <circle cx="11" cy="15" r="1" />
-                                </svg>
-                            </div>
-                            <span class="text-white font-semibold text-lg">Checkout & Pay</span>
-                        </div>
-                    </div>
-        
-                    <!-- Step 4: Get Served or Delivery -->
-                    <div class="flex items-center">
-                        <div class="bg-green-500 rounded-2xl p-4 flex items-center space-x-3 min-w-0 flex-1">
-                            <div class="bg-white rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M9 12L11 14L15 10M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4L13.5 7H12V13H18V11H22L21 9ZM16 17V19H8V17C8 17 8 16 10 16S12 17 12 17S12 16 14 16S16 17 16 17Z" />
-                                </svg>
-                            </div>
-                            <span class="text-white font-semibold text-lg">Get Served or Delivery</span>
-                        </div>
-                    </div>
+                <img src="./images/img/steps.png" alt="">
                 </div>
         
                 <!-- Right Side Content -->
-                <div class="text-center lg:text-left">
+                <div class="text-center lg:text-left flex flex-wrap justify-evenly">
                     <!-- Scan & Explore Section -->
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-blue-800 mb-4">Scan & Explore</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    <div class="mb-8 md:w-1/2 w-full">
+                        <h3 class=" md:text-sm lg:text-lg font-bold text-blue-800 mb-4">Scan & Explore</h3>
+                        <p class="text-gray-600 md:text-sm lg:text-lg  leading-relaxed mb-6">
                             Scan the QR code to instantly browse our full menu of delicious meals and drinks — quick, easy, and
                             contactless. Your next crave-worthy order is just a scan away!
                         </p>
                     </div>
         
                     <!-- QR Code -->
-                    <div class="flex justify-center lg:justify-start mb-8">
-                        <div class="bg-white p-6 rounded-2xl shadow-lg">
-                            <div class="w-48 h-48 bg-black relative">
-                                <!-- QR Code Pattern -->
-                                <svg viewBox="0 0 100 100" class="w-full h-full">
-                                    <!-- Corner squares -->
-                                    <rect x="0" y="0" width="20" height="20" fill="black" />
-                                    <rect x="3" y="3" width="14" height="14" fill="white" />
-                                    <rect x="6" y="6" width="8" height="8" fill="black" />
-        
-                                    <rect x="80" y="0" width="20" height="20" fill="black" />
-                                    <rect x="83" y="3" width="14" height="14" fill="white" />
-                                    <rect x="86" y="6" width="8" height="8" fill="black" />
-        
-                                    <rect x="0" y="80" width="20" height="20" fill="black" />
-                                    <rect x="3" y="83" width="14" height="14" fill="white" />
-                                    <rect x="6" y="86" width="8" height="8" fill="black" />
-        
-                                    <!-- Timing patterns -->
-                                    <rect x="8" y="22" width="2" height="2" fill="black" />
-                                    <rect x="8" y="26" width="2" height="2" fill="black" />
-                                    <rect x="8" y="30" width="2" height="2" fill="black" />
-                                    <rect x="8" y="34" width="2" height="2" fill="black" />
-                                    <rect x="8" y="38" width="2" height="2" fill="black" />
-                                    <rect x="8" y="42" width="2" height="2" fill="black" />
-                                    <rect x="8" y="46" width="2" height="2" fill="black" />
-                                    <rect x="8" y="50" width="2" height="2" fill="black" />
-                                    <rect x="8" y="54" width="2" height="2" fill="black" />
-                                    <rect x="8" y="58" width="2" height="2" fill="black" />
-                                    <rect x="8" y="62" width="2" height="2" fill="black" />
-                                    <rect x="8" y="66" width="2" height="2" fill="black" />
-                                    <rect x="8" y="70" width="2" height="2" fill="black" />
-                                    <rect x="8" y="74" width="2" height="2" fill="black" />
-                                    <rect x="8" y="78" width="2" height="2" fill="black" />
-        
-                                    <rect x="22" y="8" width="2" height="2" fill="black" />
-                                    <rect x="26" y="8" width="2" height="2" fill="black" />
-                                    <rect x="30" y="8" width="2" height="2" fill="black" />
-                                    <rect x="34" y="8" width="2" height="2" fill="black" />
-                                    <rect x="38" y="8" width="2" height="2" fill="black" />
-                                    <rect x="42" y="8" width="2" height="2" fill="black" />
-                                    <rect x="46" y="8" width="2" height="2" fill="black" />
-                                    <rect x="50" y="8" width="2" height="2" fill="black" />
-                                    <rect x="54" y="8" width="2" height="2" fill="black" />
-                                    <rect x="58" y="8" width="2" height="2" fill="black" />
-                                    <rect x="62" y="8" width="2" height="2" fill="black" />
-                                    <rect x="66" y="8" width="2" height="2" fill="black" />
-                                    <rect x="70" y="8" width="2" height="2" fill="black" />
-                                    <rect x="74" y="8" width="2" height="2" fill="black" />
-                                    <rect x="78" y="8" width="2" height="2" fill="black" />
-        
-                                    <!-- Data modules (random pattern) -->
-                                    <rect x="25" y="25" width="2" height="2" fill="black" />
-                                    <rect x="29" y="25" width="2" height="2" fill="black" />
-                                    <rect x="33" y="27" width="2" height="2" fill="black" />
-                                    <rect x="37" y="25" width="2" height="2" fill="black" />
-                                    <rect x="41" y="29" width="2" height="2" fill="black" />
-                                    <rect x="45" y="25" width="2" height="2" fill="black" />
-                                    <rect x="49" y="27" width="2" height="2" fill="black" />
-                                    <rect x="53" y="25" width="2" height="2" fill="black" />
-                                    <rect x="57" y="29" width="2" height="2" fill="black" />
-                                    <rect x="61" y="25" width="2" height="2" fill="black" />
-                                    <rect x="65" y="27" width="2" height="2" fill="black" />
-                                    <rect x="69" y="25" width="2" height="2" fill="black" />
-                                    <rect x="73" y="29" width="2" height="2" fill="black" />
-        
-                                    <rect x="25" y="33" width="2" height="2" fill="black" />
-                                    <rect x="31" y="33" width="2" height="2" fill="black" />
-                                    <rect x="35" y="35" width="2" height="2" fill="black" />
-                                    <rect x="39" y="33" width="2" height="2" fill="black" />
-                                    <rect x="43" y="37" width="2" height="2" fill="black" />
-                                    <rect x="47" y="33" width="2" height="2" fill="black" />
-                                    <rect x="51" y="35" width="2" height="2" fill="black" />
-                                    <rect x="55" y="33" width="2" height="2" fill="black" />
-                                    <rect x="59" y="37" width="2" height="2" fill="black" />
-                                    <rect x="63" y="33" width="2" height="2" fill="black" />
-                                    <rect x="67" y="35" width="2" height="2" fill="black" />
-                                    <rect x="71" y="33" width="2" height="2" fill="black" />
-        
-                                    <!-- More data pattern -->
-                                    <rect x="27" y="41" width="2" height="2" fill="black" />
-                                    <rect x="33" y="43" width="2" height="2" fill="black" />
-                                    <rect x="37" y="41" width="2" height="2" fill="black" />
-                                    <rect x="41" y="45" width="2" height="2" fill="black" />
-                                    <rect x="45" y="41" width="2" height="2" fill="black" />
-                                    <rect x="49" y="43" width="2" height="2" fill="black" />
-                                    <rect x="53" y="41" width="2" height="2" fill="black" />
-                                    <rect x="57" y="45" width="2" height="2" fill="black" />
-                                    <rect x="61" y="41" width="2" height="2" fill="black" />
-                                    <rect x="65" y="43" width="2" height="2" fill="black" />
-                                    <rect x="69" y="41" width="2" height="2" fill="black" />
-        
-                                    <rect x="25" y="49" width="2" height="2" fill="black" />
-                                    <rect x="31" y="51" width="2" height="2" fill="black" />
-                                    <rect x="35" y="49" width="2" height="2" fill="black" />
-                                    <rect x="39" y="53" width="2" height="2" fill="black" />
-                                    <rect x="43" y="49" width="2" height="2" fill="black" />
-                                    <rect x="47" y="51" width="2" height="2" fill="black" />
-                                    <rect x="51" y="49" width="2" height="2" fill="black" />
-                                    <rect x="55" y="53" width="2" height="2" fill="black" />
-                                    <rect x="59" y="49" width="2" height="2" fill="black" />
-                                    <rect x="63" y="51" width="2" height="2" fill="black" />
-                                    <rect x="67" y="49" width="2" height="2" fill="black" />
-        
-                                    <rect x="29" y="57" width="2" height="2" fill="black" />
-                                    <rect x="33" y="59" width="2" height="2" fill="black" />
-                                    <rect x="37" y="57" width="2" height="2" fill="black" />
-                                    <rect x="41" y="61" width="2" height="2" fill="black" />
-                                    <rect x="45" y="57" width="2" height="2" fill="black" />
-                                    <rect x="49" y="59" width="2" height="2" fill="black" />
-                                    <rect x="53" y="57" width="2" height="2" fill="black" />
-                                    <rect x="57" y="61" width="2" height="2" fill="black" />
-                                    <rect x="61" y="57" width="2" height="2" fill="black" />
-                                    <rect x="65" y="59" width="2" height="2" fill="black" />
-                                    <rect x="69" y="57" width="2" height="2" fill="black" />
-        
-                                    <rect x="25" y="65" width="2" height="2" fill="black" />
-                                    <rect x="31" y="67" width="2" height="2" fill="black" />
-                                    <rect x="35" y="65" width="2" height="2" fill="black" />
-                                    <rect x="39" y="69" width="2" height="2" fill="black" />
-                                    <rect x="43" y="65" width="2" height="2" fill="black" />
-                                    <rect x="47" y="67" width="2" height="2" fill="black" />
-                                    <rect x="51" y="65" width="2" height="2" fill="black" />
-                                    <rect x="55" y="69" width="2" height="2" fill="black" />
-                                    <rect x="59" y="65" width="2" height="2" fill="black" />
-                                    <rect x="63" y="67" width="2" height="2" fill="black" />
-                                    <rect x="67" y="65" width="2" height="2" fill="black" />
-        
-                                    <rect x="27" y="73" width="2" height="2" fill="black" />
-                                    <rect x="33" y="75" width="2" height="2" fill="black" />
-                                    <rect x="37" y="73" width="2" height="2" fill="black" />
-                                    <rect x="41" y="77" width="2" height="2" fill="black" />
-                                    <rect x="45" y="73" width="2" height="2" fill="black" />
-                                    <rect x="49" y="75" width="2" height="2" fill="black" />
-                                    <rect x="53" y="73" width="2" height="2" fill="black" />
-                                    <rect x="57" y="77" width="2" height="2" fill="black" />
-                                    <rect x="61" y="73" width="2" height="2" fill="black" />
-                                    <rect x="65" y="75" width="2" height="2" fill="black" />
-                                    <rect x="69" y="73" width="2" height="2" fill="black" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Browse Menu Button -->
-                    <!-- <div class="mt-12">
-                        <button
-                            class="bg-green-500 hover:bg-green-600 text-white font-semibold text-xl px-8 py-4 rounded-2xl flex items-center space-x-3 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
-                            <div class="bg-white rounded-lg p-2">
-                                <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                                    <path
-                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
-                                </svg>
-                            </div>
-                            <span>Browse Menu</span>
-                        </button>
-                    </div> -->
+                  <div class="md:w-1/2 w-full p-5">
+                    <img class="w-full" src="./images/img/qr.png" alt="">
+                  </div>
                 </div>
             </div>
         </section>
@@ -1069,7 +918,7 @@
             <div class="border-t border-gray-200 pt-8">
                 <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
                     <p class="text-gray-500 text-sm">Copyright © 2025 Food Central. All Right Reserved</p>
-                    <div class="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
+                    <div class="flex flex-wrap justify-end space-x-6 text-sm">
                         <a href="#"
                             class="text-gray-600 hover:text-green-500 transition-colors duration-300 flex items-center">
                             <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
