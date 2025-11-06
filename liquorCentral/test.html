@@ -1,0 +1,169 @@
+<section class="bg-black text-white overflow-x-hidden">
+    <div class="relative min-h-[70dvh]">
+        <!-- Hero Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
+            <div class="w-full h-full bg-cover bg-center bg-no-repeat"
+                style="background-image: url('../images/herobg/liquorimg.jpg');">
+            </div>
+        </div>
+        <!-- Content Container -->
+        <div class="relative z-20 container mx-auto px-4 py-8 lg:py-16">
+            <div class="grid lg:grid-cols-2 gap-8 items-center min-h-[70dvh]">
+                <!-- Left Content -->
+                <div class="space-y-6 lg:space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                            Sip the Finest<br>
+                            Liquor from Our<br>
+                            <span class="text-red-700">Quality Store</span>
+                        </h1>
+                        <p class="text-gray-300 text-lg md:text-xl max-w-lg">
+                            Discover a wide range of liquors, wines, and exotic blends.
+                        </p>
+                    </div>
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button
+                            class="bg-white hover:bg-green-700 hover:text-white text-green-500 px-8 py-4 rounded-lg font-semibold transition-all duration-100 hover:scale-105">
+                            Browse Drinks
+                        </button>
+                        <button
+                            class="bg-green-600 hover:bg-white hover:text-green-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-0 hover:scale-105">
+                            Shop Now
+                        </button>
+                    </div>
+                    <!-- Social Media Icons -->
+                    <div class="flex gap-4 pt-4">
+                        <div class="max-w-14 transition-all duration-100">
+                            <div class="bg-white p-2 rounded-full">
+                                <a href="">
+                                    <img class="w-10" src="../images/icons/facebookicon.svg" alt="facebook icon">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- instagram icon  -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-3 rounded-full transition-all duration-100">
+                                <a href="">
+                                    <img class="w-10" src="../images/icons/instagramicon.svg" alt="instagram icon">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- twitter icon -->
+                        <div class="max-w-14">
+                            <div class="bg-white p-3 rounded-full">
+                                <a href="" class="transition-all duration-100">
+                                    <img class="w-10" src="../images/icons/twittericon.svg" alt="twitter icon">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Content - Popular Listings Slider -->
+                <div class="relative">
+                    <!-- #NO Warning Badge -->
+                    <div class="absolute -top-10 right-4 z-30">
+                        <div
+                            class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-2">
+                            <span class="text-xl">#</span>
+                            <span>NO</span>
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                                <span class="text-red-600 text-xs font-bold">18</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slider Container -->
+                    <div class=" flex justify-end">
+
+
+                        <div class="bg-[#EEF0FF] absolute mt-20 rounded-sm p-6 border border-white/20">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-xl font-semibold text-blue-800">Popular Listings</h3>
+                                <div class="flex gap-2">
+                                    <button id="prevBtn"
+                                        class="bg-red-600 hover:bg-red-700 p-2 rounded-lg transition-colors duration-100">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+                                    <button id="nextBtn"
+                                        class="bg-red-600 hover:bg-red-700 p-2 rounded-lg transition-colors duration-100">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Slider -->
+                            <div class="overflow-hidden">
+                                <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+                                    <!-- Slide 1 -->
+                                    <div class="flex-none w-full">
+                                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                            <!-- Whiskey Collection -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting1.jpg" alt=""></a>
+                                            </div>
+                                            <!-- Bacardi -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting2.jpg" alt=""></a>
+                                            </div>
+                                            <!-- Cocktail -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting3.png" alt=""></a>
+                                            </div>
+                                            <!-- Johnnie Walker -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting4.png" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Slide 2 -->
+                                    <div class="flex-none w-full">
+                                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                            <!-- Vodka Collection -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting5.jpg" alt=""></a>
+                                            </div>
+                                            <!-- Vodka Collection -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting5.jpg" alt=""></a>
+                                            </div>
+                                            <!-- Vodka Collection -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting5.jpg" alt=""></a>
+                                            </div>
+                                            <!-- Vodka Collection -->
+                                            <div class="group cursor-pointer">
+                                                <a href=""><img
+                                                        class="bg-white rounded-lg p-1 w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-100"
+                                                        src="../images/img/popularlisting5.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
